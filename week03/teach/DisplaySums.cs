@@ -1,4 +1,7 @@
-﻿public static class DisplaySums {
+﻿using System.ComponentModel;
+using System.Runtime.ExceptionServices;
+
+public static class DisplaySums {
     public static void Run() {
         DisplaySumPairs([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
         // Should show something like (order does not matter):
@@ -28,6 +31,32 @@
     /// </summary>
     /// <param name="numbers">array of integers</param>
     private static void DisplaySumPairs(int[] numbers) {
+        var seen = new HashSet<int>(numbers);
+        var number = new Dictionary<int, int>();
+        foreach (var x in numbers)
+        {
+            if (seen.Contains(10 - x))
+            {
+                if (number.ContainsKey(x) || number.ContainsKey(10 - x))
+
+                {
+
+                }
+                else
+                {
+                    number.Add(x, 10 - x);
+                }
+
+            }
+
+
+        }
+        foreach (KeyValuePair<int, int> x in number)
+        {
+            Console.WriteLine("Key: {0}, Value: {1}", x.Key, x.Value);
+        }
+        
+        
         // TODO Problem 2 - This should print pairs of numbers in the given array
     }
 }
